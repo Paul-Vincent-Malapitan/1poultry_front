@@ -3,25 +3,47 @@
     <v-app-bar app color="primary">
       <v-toolbar-title>Admin</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn text @click="navigateTo('user')">User Management</v-btn>
-      <v-btn text @click="navigateTo('branch')">Branch Management</v-btn>
-      <v-btn text @click="navigateTo('inventory')">Inventory</v-btn>
+      <v-btn text @click="setPage('user')">User Management</v-btn>
+      <v-btn text @click="setPage('branch')">Branch Management</v-btn>
+      <v-btn text @click="setPage('inventory')">Inventory</v-btn>
     </v-app-bar>
 
     <v-main>
       <v-container fluid>
-        <!-- Content will be displayed here based on the selected page -->
-        <router-view></router-view>
+        <!-- Display the selected page component here -->
+        <component :is="currentPage"></component>
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import UserManagement from '@/views/UserManagement.vue';
+import BranchManagement from '@/views/BranchManagement.vue';
+import InventoryManagement from '@/views/InventoryManagement.vue';
+
 export default {
+  data() {
+    return {
+      currentPage: null,
+    };
+  },
   methods: {
-    navigateTo(page) {
-      this.$router.push({ name: page });
+    setPage(page) {
+      // Set the current page based on the button clicked
+      switch (page) {
+        case 'user':
+          this.currentPage = UserManagement;
+          break;
+        case 'branch':
+          this.currentPage = BranchManagement;
+          break;
+        case 'inventory':
+          this.currentPage = InventoryManagement;
+          break;
+        default:
+          this.currentPage = null;
+      }
     },
   },
 };
