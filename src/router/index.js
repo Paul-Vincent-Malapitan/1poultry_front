@@ -4,6 +4,7 @@ import Admin from '../views/Admin.vue'
 import UserManagement from '../views/UserManagement.vue'
 import BranchManagement from '../views/BranchManagement.vue'
 import Inventory from '../views/InventoryManagement.vue'
+import Customer from '../views/Customer.vue'
 
 
 const routes = [
@@ -25,6 +26,11 @@ const routes = [
   { path: '/user', name: 'user', component: UserManagement },
   { path: '/branch', name: 'branch', component: BranchManagement },
   { path: '/inventory', name: 'inventory', component: Inventory },
+  {
+    path: '/customer',
+    name: 'customer',
+    component: Customer
+  },
 ]
 
 const router = createRouter({
