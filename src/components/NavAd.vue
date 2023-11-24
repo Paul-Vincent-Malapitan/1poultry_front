@@ -1,6 +1,6 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary">
+
+    <v-app-bar scroll-behavior="inverted" app color="primary">
       <v-toolbar-title>Admin</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn text @click="setPage('user')">User Management</v-btn>
@@ -14,7 +14,7 @@
         <component :is="currentPage"></component>
       </v-container>
     </v-main>
-  </v-app>
+
 </template>
 
 <script>
